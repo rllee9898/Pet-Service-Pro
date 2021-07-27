@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Data
 {
-    class IndividualWalkService
+    public class IndividualWalkService
     {
         //[Key]
         //[Required]
