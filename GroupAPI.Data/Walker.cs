@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Data
 {
-    class Walker
+   public class Walker
     {
         [Key]
         public int WalkerId { get; set; }
