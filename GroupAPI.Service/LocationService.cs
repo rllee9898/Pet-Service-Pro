@@ -31,7 +31,7 @@ namespace GroupAPI.Service
 
         //Get
 
-        //This method will allow us to see all the pets that belong to a specific user.
+        //This method will allow us to see all the locations.
         public IEnumerable<LocationListItem> GetLocations()
         {
             using (var ctx = new ApplicationDbContext())
