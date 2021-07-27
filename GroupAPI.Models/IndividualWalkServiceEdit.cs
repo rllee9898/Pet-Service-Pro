@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GroupAPI.Data
+namespace GroupAPI.Models
 {
-    class IndividualWalkService
+    public class IndividualWalkServiceEdit
     {
-        //[Key]
-        //[Required]
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
         public int WalkLength { get; set; }

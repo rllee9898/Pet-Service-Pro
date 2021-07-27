@@ -65,14 +65,14 @@ namespace GroupAPI.Service
             
         }
 
-        public PetDetail GetPetById(int id)
+        public PetDetail GetPetById(int Petid)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var enity =
                     ctx
                         .Pets
-                        .Single(e => e.PetId == id && e.OwnerId == _userId);
+                        .Single(e => e.PetId == Petid && e.OwnerId == _userId);
                 return
                     new PetDetail
                     {
