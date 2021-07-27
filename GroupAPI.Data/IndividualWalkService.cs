@@ -9,8 +9,7 @@ namespace GroupAPI.Data
 {
     public class IndividualWalkService
     {
-        //[Key]
-        //[Required]
+        [Key]
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
         public int WalkLength { get; set; }
