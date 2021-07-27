@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Models
 {
-    class WalkerCreate
+    public class WalkerCreate
     {
         //[Key]
         //[Required]
