@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IndividualWalkService.cs" />
+    <Compile Include="ScheduledWalks.cs" />
     <Compile Include="Walker.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Pet.cs" />
