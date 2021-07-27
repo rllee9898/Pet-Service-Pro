@@ -35,6 +35,9 @@ namespace GroupAPI.Data
 
         public DbSet<Pet> Pets { get; set; }
         public DbSet<IndividualWalkService> IndividualWalkServices { get; set; }
+        public DbSet<Walker> Walkers { get; set; }
+        public DbSet<Location> Locations { get; set; }       
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
