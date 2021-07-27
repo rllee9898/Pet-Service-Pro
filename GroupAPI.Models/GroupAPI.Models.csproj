@@ -54,11 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LocationCreate.cs" />
+    <Compile Include="LocationDetail.cs" />
+    <Compile Include="LocationEdit.cs" />
+    <Compile Include="LocationListItem.cs" />
     <Compile Include="PetCreate.cs" />
     <Compile Include="PetDetail.cs" />
     <Compile Include="PetEdit.cs" />
     <Compile Include="PetListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WalkerCreate.cs" />
+    <Compile Include="WalkerDetail.cs" />
+    <Compile Include="WalkerEdit.cs" />
+    <Compile Include="WalkerListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
