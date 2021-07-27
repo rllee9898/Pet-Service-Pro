@@ -54,10 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="IndividualWalkServiceCreate.cs" />
+    <Compile Include="IndividualWalkServiceDetail.cs" />
+    <Compile Include="IndividualWalkServiceEdit.cs" />
+    <Compile Include="IndividualWalkServiceListItem.cs" />
+
     <Compile Include="LocationCreate.cs" />
     <Compile Include="LocationDetail.cs" />
     <Compile Include="LocationEdit.cs" />
     <Compile Include="LocationListItem.cs" />
+
     <Compile Include="PetCreate.cs" />
     <Compile Include="PetDetail.cs" />
     <Compile Include="PetEdit.cs" />
