@@ -12,9 +12,9 @@ namespace GroupAPI.Data
         //[Key]
         //[Required]
         public int ServiceId { get; set; }
-        public string ServiceName { get; set; }
+        //public string ServiceName { get; set; }
         public int WalkLength { get; set; }
-        public int LocationId { get; set; }
+        //public int LocationId { get; set; }
         public Decimal Price { get; set; }
     }
 }
