@@ -22,7 +22,7 @@ namespace GroupAPI.Service
         //Post 
 
         // This will create a instance of Pet
-        public bool CreateNote(PetCreate model)
+        public bool CreatePet(PetCreate model)
         {
             var entity =
                 new Pet()
@@ -43,7 +43,7 @@ namespace GroupAPI.Service
         //Get
 
         //This method will allow us to see all the pets that belong to a specific user.
-        public IEnumerable<PetListItem> GetNotes()
+        public IEnumerable<PetListItem> GetPets()
         {
             using (var ctx = new ApplicationDbContext())
             {
