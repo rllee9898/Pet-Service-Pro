@@ -44,7 +44,7 @@ namespace GroupAPI.Service
                                     ServiceName = e.ServiceName,
                                     WalkLength = e.WalkLength,
                                     LocationId = e.LocationId,
-                                    Price = e.Price                                 
+                                    Price = e.Price
                                 }
                         );
                 return query.ToArray();
@@ -82,7 +82,7 @@ namespace GroupAPI.Service
                 entity.ServiceName = model.ServiceName;
                 entity.WalkLength = model.WalkLength;
                 entity.LocationId = model.LocationId;
-                entity.Price = model.Price;                
+                entity.Price = model.Price;
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -95,11 +95,11 @@ namespace GroupAPI.Service
                 var entity =
                     ctx
                     .IndividualWalkServices
-                  
+
                     .Single(e => e.ServiceId == ServiceId);
-                
+
                 ctx.IndividualWalkServices.Remove(entity);
-               
+
                 return ctx.SaveChanges() == 1;
             }
         }

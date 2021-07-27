@@ -209,6 +209,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\PetController.cs" />
+    <Compile Include="Controllers\ScheduledWalksController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WalkerController.cs" />
     <Compile Include="Global.asax.cs">
