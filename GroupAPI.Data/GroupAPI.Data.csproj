@@ -85,6 +85,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IndividualWalkService.cs" />
+    <Compile Include="Migrations\202107261930168_InitialCreate.cs" />
+    <Compile Include="Migrations\202107261930168_InitialCreate.Designer.cs">
+      <DependentUpon>202107261930168_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107271844303_Robbiemigration one.cs" />
+    <Compile Include="Migrations\202107271844303_Robbiemigration one.Designer.cs">
+      <DependentUpon>202107271844303_Robbiemigration one.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ScheduledWalks.cs" />
     <Compile Include="Walker.cs" />
     <Compile Include="Location.cs" />
@@ -95,6 +104,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107261930168_InitialCreate.resx">
+      <DependentUpon>202107261930168_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107271844303_Robbiemigration one.resx">
+      <DependentUpon>202107271844303_Robbiemigration one.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
