@@ -28,7 +28,7 @@ namespace GroupAPI.Service
             }
         }
         //Get
-        //This method will allow us to see all the pets that belong to a specific user.
+        //This method will allow us to see all the individual walk services
         public IEnumerable<IndividualWalkServiceListItem> GetIndividualWalkServiceService()
         {
             using (var ctx = new ApplicationDbContext())
