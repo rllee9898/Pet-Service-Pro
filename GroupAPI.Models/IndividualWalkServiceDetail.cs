@@ -13,5 +13,11 @@ namespace GroupAPI.Models
         public int WalkLength { get; set; }
         public int LocationId { get; set; }
         public Decimal Price { get; set; }
+
+        //Extra Location ref  
+        public string LocationStart { get; set; }
+        public string LocationEnd { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
     }
 }

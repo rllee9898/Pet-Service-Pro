@@ -12,16 +12,15 @@ namespace GroupAPI.Data
     {
         [Key]
         public int ServiceId { get; set; }
+      
+        public string ServiceName { get; set; }
 
-        
-        [Required]
+        public int WalkLength { get; set; }
+
         [ForeignKey(nameof(Location))]
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
 
-        
-        public string ServiceName { get; set; }
-        public int WalkLength { get; set; }
         public Decimal Price { get; set; }
     }
 }
