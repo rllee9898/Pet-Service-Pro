@@ -14,10 +14,25 @@ namespace Group_API_Project_Assessment.Controllers
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
-        //CRUD / PGPD
-        //Post
+        public PetController()
+        {
+            _context.Pets.Add(new Pet { PetType = "Dog", PetName = "Bailey" });
+            _context.Pets.Add(new Pet { PetType = "Cat", PetName = "Max" });
+            _context.Pets.Add(new Pet { PetType = "Bird", PetName = "Bella" });
+            _context.Pets.Add(new Pet { PetType = "Fish", PetName = "Charlie" });
+            _context.Pets.Add(new Pet { PetType = "Chinchilla", PetName = "Roxy" });
+            _context.Pets.Add(new Pet { PetType = "Turtle", PetName = "Sam" });
+            _context.Pets.Add(new Pet { PetType = "Hermit Crab", PetName = "Oscar" });
+            _context.Pets.Add(new Pet { PetType = "Parrot", PetName = "Lily" });
+            _context.Pets.Add(new Pet { PetType = "Guinea Pig", PetName = "Maggie" });
+            _context.Pets.Add(new Pet { PetType = "Ferret", PetName = "Daisy" });
+            _context.Pets.Add(new Pet { PetType = "Giraffe", PetName = "Rocky" });
+        }
 
-        [HttpPost]
+            //CRUD / PGPD
+            //Post
+
+            [HttpPost]
         public async Task<IHttpActionResult> Post(Pet pet)
         {
             if (!ModelState.IsValid)

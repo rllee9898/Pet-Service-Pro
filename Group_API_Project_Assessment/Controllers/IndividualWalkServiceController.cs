@@ -53,6 +53,29 @@ namespace Group_API_Project_Assessment.Controllers
             return NotFound();
         }
 
+        public async Task<IHttpActionResult> GetByLocationId([FromUri] int locationId)
+        {
+            //customer id exists?
+
+            List<IndividualWalkService> walkToReturn = new List<IndividualWalkService>();
+            List<IndividualWalkService> walkInDatabase = await _context.IndividualWalkServices.ToListAsync();
+
+            foreach (IndividualWalkService walk in walkInDatabase)
+            {
+                if (walk.LocationId == locationId)
+                {
+                    walkToReturn.Add(walk);
+                }
+            }
+            //using a link querying through a list
+            //does the same thing as the above foreach loop
+            walkToReturn = walkInDatabase.Where(t => t.LocationId == locationId).ToList();
+
+
+            // how to return a list
+            return Ok(walkToReturn);
+        }
+
 
 
         //Update = Put

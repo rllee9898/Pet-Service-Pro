@@ -14,6 +14,16 @@ namespace Group_API_Project_Assessment.Controllers
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
+        public LocationController()
+        {
+            _context.Locations.Add(new Location { LocationStart = "Eagle Creek Ornithology Center", LocationEnd = "Lily Lake", City = "Indianapolis", State = "Indiana" });
+            _context.Locations.Add(new Location { LocationStart = "Alpine Center", LocationEnd = "Kawuneeche Valley", City = "Breckenridge", State = "Colorado" });
+            _context.Locations.Add(new Location { LocationStart = "Yosemite Falls", LocationEnd = "Half Dome", City = "Yosemite", State = "Colorado" });
+            _context.Locations.Add(new Location { LocationStart = "Haleakala Volcano", LocationEnd = "Wailea Resort", City = "Maui", State = "Hawaii" });
+            _context.Locations.Add(new Location { LocationStart = "Cadillac Mountain", LocationEnd = "Stewman's", City = "Acadia", State = "Maine" });
+            _context.Locations.Add(new Location { LocationStart = "Shark Valley", LocationEnd = "Anhinga Trail", City = "Everglades", State = "Florida" });
+        }
+
         //CRUD / PGPD
         //Post
 
