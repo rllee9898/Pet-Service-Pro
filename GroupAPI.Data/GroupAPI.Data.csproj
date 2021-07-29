@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202107281327369_added foreign keys.Designer.cs">
       <DependentUpon>202107281327369_added foreign keys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107291426430_Thursday1.cs" />
+    <Compile Include="Migrations\202107291426430_Thursday1.Designer.cs">
+      <DependentUpon>202107291426430_Thursday1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ScheduledWalks.cs" />
     <Compile Include="Walker.cs" />
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107281327369_added foreign keys.resx">
       <DependentUpon>202107281327369_added foreign keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107291426430_Thursday1.resx">
+      <DependentUpon>202107291426430_Thursday1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

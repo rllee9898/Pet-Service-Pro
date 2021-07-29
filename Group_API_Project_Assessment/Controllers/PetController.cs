@@ -120,16 +120,4 @@ namespace Group_API_Project_Assessment.Controllers
 
                 }*/
     }
-
-    private void SeedContentList()
-    {
-        StreamingContent harryPotter = new StreamingContent("Harry Potter", "Magical Kid causes trouble for aunt and uncle", 10, "Magic", MaturityRating.PG);
-        StreamingContent titanic = new StreamingContent("Titanic", "Ive got a sinking fealing", 8, "Tragedy", MaturityRating.PG_13);
-        StreamingContent willyWonka = new StreamingContent("Willy Wonka", "Man makes candy", 7, "Sweet Treat", MaturityRating.G);
-
-        _streamingRepo.AddContentToDirectory(harryPotter);
-        _streamingRepo.AddContentToDirectory(titanic);
-        _streamingRepo.AddContentToDirectory(willyWonka);
-    }
-
 }
