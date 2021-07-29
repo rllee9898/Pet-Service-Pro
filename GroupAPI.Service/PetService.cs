@@ -42,8 +42,8 @@ namespace GroupAPI.Service
 
         //Get
 
-        //This method will allow us to see all the pets that belong to a specific user.
-        public IEnumerable<PetListItem> GetPets()
+        //This method will allow us to see the pets that belong to a specific user.
+        public IEnumerable<PetListItem> GetPetsByUserId()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -63,6 +63,29 @@ namespace GroupAPI.Service
                 return query.ToArray();
             }
             
+        }
+
+        //This method will allow us to see the pets that belong to a specific user.
+        public IEnumerable<PetListItem> GetPets()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Pets
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new PetListItem
+                                {
+                                    PetId = e.PetId,
+                                    PetType = e.PetType,
+                                    PetName = e.PetName
+                                }
+                        );
+                return query.ToArray();
+            }
+
         }
 
         public PetDetail GetPetById(int Petid)

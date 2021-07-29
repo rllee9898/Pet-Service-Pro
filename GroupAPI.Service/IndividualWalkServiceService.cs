@@ -45,6 +45,7 @@ namespace GroupAPI.Service
                                     WalkLength = e.WalkLength,
                                     LocationId = e.Location.LocationId,
                                     LocationStart = e.Location.LocationStart,
+                                    LocationEnd = e.Location.LocationEnd,
                                     City = e.Location.City,
                                     Price = e.Price,
                                 }

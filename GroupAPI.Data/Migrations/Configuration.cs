@@ -64,8 +64,8 @@ namespace GroupAPI.Data.Migrations
             context.IndividualWalkServices.AddOrUpdate(
               p => p.ServiceName,
               new IndividualWalkService { ServiceName = "Walk", WalkLength = 7, Price = 17.42m, LocationId = 2 },
-              new IndividualWalkService { ServiceName = "LongWalk", WalkLength = 15, Price = 24.42m, LocationId = 1 },
-              new IndividualWalkService { ServiceName = "ReallyLongWalk", WalkLength = 32, Price = 37.42m, LocationId = 2 }
+              new IndividualWalkService { ServiceName = "Long Walk", WalkLength = 15, Price = 24.42m, LocationId = 4 },
+              new IndividualWalkService { ServiceName = "Really Long Walk", WalkLength = 32, Price = 37.42m, LocationId = 3 }
               );
         }
     }
