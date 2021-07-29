@@ -43,8 +43,10 @@ namespace GroupAPI.Service
                                     ServiceId = e.ServiceId,
                                     ServiceName = e.ServiceName,
                                     WalkLength = e.WalkLength,
-                                    LocationId = e.LocationId,
-                                    Price = e.Price
+                                    LocationId = e.Location.LocationId,
+                                    LocationStart = e.Location.LocationStart,
+                                    City = e.Location.City,
+                                    Price = e.Price,
                                 }
                         );
                 return query.ToArray();
