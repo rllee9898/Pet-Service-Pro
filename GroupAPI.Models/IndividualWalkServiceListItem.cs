@@ -20,7 +20,13 @@ namespace GroupAPI.Models
         
         [Display(Name = "Location ID")]
         public int LocationId { get; set; }
-       
+        
+        [Display(Name = "Location Start")]
+        public string LocationStart { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
         [Display(Name = "Price")]
         public Decimal Price { get; set; }
     }

@@ -14,25 +14,10 @@ namespace Group_API_Project_Assessment.Controllers
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
-        public WalkerController()
-        {
-            _context.Walkers.Add(new Walker { WalkerName = "James" });
-            _context.Walkers.Add(new Walker { WalkerName = "Mary" });
-            _context.Walkers.Add(new Walker { WalkerName = "Robert" });
-            _context.Walkers.Add(new Walker { WalkerName = "Susan" });
-            _context.Walkers.Add(new Walker { WalkerName = "Jennifer" });
-            _context.Walkers.Add(new Walker { WalkerName = "Richard" });
-            _context.Walkers.Add(new Walker { WalkerName = "Ashley" });
-            _context.Walkers.Add(new Walker { WalkerName = "Paul" });
-            _context.Walkers.Add(new Walker { WalkerName = "Emily" });
-            _context.Walkers.Add(new Walker { WalkerName = "Michael" });
-            _context.Walkers.Add(new Walker { WalkerName = "Kathleen" });
-        }
-
             //CRUD / PGPD
             //Post
 
-            [HttpPost]
+        [HttpPost]
         public async Task<IHttpActionResult> Post(Walker walker)
         {
             if (!ModelState.IsValid)
