@@ -22,7 +22,7 @@ namespace Group_API_Project_Assessment.Controllers
             var petService = new PetService(userId);
             return petService;
         }
-
+        
         //Get Method
         public IHttpActionResult Get()
         {
@@ -70,7 +70,6 @@ namespace Group_API_Project_Assessment.Controllers
         }
 
         //Delete method
-
         //Delete
         public IHttpActionResult Delete(int id)
         {
@@ -82,3 +81,4 @@ namespace Group_API_Project_Assessment.Controllers
         }
     }
 }
+

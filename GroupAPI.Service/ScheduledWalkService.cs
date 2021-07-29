@@ -69,9 +69,7 @@ namespace GroupAPI.Service
                     };
             }
         }
-
-        
-
+      
         //Put or Update
         //Update Method
         public bool UpdateScheduledWalks(ScheduledWalksEdit model)

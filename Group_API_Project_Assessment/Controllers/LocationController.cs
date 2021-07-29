@@ -14,6 +14,7 @@ namespace Group_API_Project_Assessment.Controllers
 {
     public class LocationController : ApiController
     {
+
         private LocationService CreateLocationService()
         {
             var locationService = new LocationService();
