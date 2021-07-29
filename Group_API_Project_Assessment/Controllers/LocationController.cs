@@ -1,4 +1,6 @@
 ﻿using GroupAPI.Data;
+using GroupAPI.Models;
+using GroupAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,104 +14,68 @@ namespace Group_API_Project_Assessment.Controllers
 {
     public class LocationController : ApiController
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
-
-        public LocationController()
+        private LocationService CreateLocationService()
         {
-            _context.Locations.Add(new Location { LocationStart = "Eagle Creek Ornithology Center", LocationEnd = "Lily Lake", City = "Indianapolis", State = "Indiana" });
-            _context.Locations.Add(new Location { LocationStart = "Alpine Center", LocationEnd = "Kawuneeche Valley", City = "Breckenridge", State = "Colorado" });
-            _context.Locations.Add(new Location { LocationStart = "Yosemite Falls", LocationEnd = "Half Dome", City = "Yosemite", State = "Colorado" });
-            _context.Locations.Add(new Location { LocationStart = "Haleakala Volcano", LocationEnd = "Wailea Resort", City = "Maui", State = "Hawaii" });
-            _context.Locations.Add(new Location { LocationStart = "Cadillac Mountain", LocationEnd = "Stewman's", City = "Acadia", State = "Maine" });
-            _context.Locations.Add(new Location { LocationStart = "Shark Valley", LocationEnd = "Anhinga Trail", City = "Everglades", State = "Florida" });
+            var locationService = new LocationService();
+            return locationService;
         }
 
-        //CRUD / PGPD
-        //Post
-
-        [HttpPost]
-        public async Task<IHttpActionResult> Post(Location location)
+        //Get Method
+        public IHttpActionResult Get()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Locations.Add(location);
-            await _context.SaveChangesAsync();
-            return Ok($"{location.City} was added");
-        }
-
-        //Get
-        //Get All
-
-        [HttpGet]
-        public async Task<IHttpActionResult> GetAll()
-        {
-            List<Location> location = await _context.Locations.ToListAsync();
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetLocations();
             return Ok(location);
         }
 
-        //Get by SKU
-        [HttpGet]
-        public async Task<IHttpActionResult> GetByID([FromUri] int LocationId)
+        public IHttpActionResult Get(int id)
         {
-            Location location = await _context.Locations.FindAsync(LocationId);
-
-            if (location != null)
-            {
-                return Ok(location);
-            }
-            return NotFound();
+            LocationService locationService = CreateLocationService();
+            var location = locationService.GetLocationById(id);
+            return Ok(location);
         }
 
-
-
-        //Update = Put
-        [HttpPut]
-        public async Task<IHttpActionResult> UpdateLocation([FromUri] int LocationId, [FromBody] Location model)
+        //Post Method
+        public IHttpActionResult Post(LocationCreate location)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            Location location = await _context.Locations.FindAsync(LocationId);
-            if (location == null)
-            {
-                return NotFound();
-            }
+            var service = CreateLocationService();
 
-            if (location.LocationId != model.LocationId)
-            {
-                return BadRequest("Location Missmatch");
-            }
+            if (!service.CreateLocation(location))
+                return InternalServerError();
 
-            location.LocationId = model.LocationId;
-            location.LocationStart = model.LocationStart;
-            location.LocationEnd = model.LocationEnd;
-            location.City = model.City;
-            location.State = model.State;
-
-            await _context.SaveChangesAsync();
             return Ok();
-
         }
 
-        //Delete
-        [HttpDelete]
-        public async Task<IHttpActionResult> Delete([FromUri] int LocationId)
+
+        //Put or Update Method
+
+        //Put
+        public IHttpActionResult Put(LocationEdit location)
         {
-            Location location = await _context.Locations.FindAsync(LocationId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (location == null)
-            {
-                return NotFound();
-            }
+            var service = CreateLocationService();
 
-            _context.Locations.Remove(location);
-            await _context.SaveChangesAsync();
-            return Ok($"{location.City} was removed from the DB");
+            if (!service.UpdateLocation(location))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        //Delete method
+
+        //Delete
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateLocationService();
+            if (!service.DeleteLocation(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }

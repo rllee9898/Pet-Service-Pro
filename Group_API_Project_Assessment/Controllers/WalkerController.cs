@@ -1,4 +1,6 @@
 ﻿using GroupAPI.Data;
+using GroupAPI.Models;
+using GroupAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,60 +14,68 @@ namespace Group_API_Project_Assessment.Controllers
 {
     public class WalkerController : ApiController
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
-
-        public WalkerController()
+        private WalkerService CreateWalkerService()
         {
-            _context.Walkers.Add(new Walker { WalkerName = "James" });
-            _context.Walkers.Add(new Walker { WalkerName = "Mary" });
-            _context.Walkers.Add(new Walker { WalkerName = "Robert" });
-            _context.Walkers.Add(new Walker { WalkerName = "Susan" });
-            _context.Walkers.Add(new Walker { WalkerName = "Jennifer" });
-            _context.Walkers.Add(new Walker { WalkerName = "Richard" });
-            _context.Walkers.Add(new Walker { WalkerName = "Ashley" });
-            _context.Walkers.Add(new Walker { WalkerName = "Paul" });
-            _context.Walkers.Add(new Walker { WalkerName = "Emily" });
-            _context.Walkers.Add(new Walker { WalkerName = "Michael" });
-            _context.Walkers.Add(new Walker { WalkerName = "Kathleen" });
+            var walkerService = new WalkerService();
+            return walkerService;
         }
 
-            //CRUD / PGPD
-            //Post
+        //Get Method
+        public IHttpActionResult Get()
+        {
+            WalkerService walkerService = CreateWalkerService();
+            var walker = walkerService.GetWalkers();
+            return Ok(walker);
+        }
 
-            [HttpPost]
-        public async Task<IHttpActionResult> Post(Walker walker)
+        public IHttpActionResult Get(int id)
+        {
+            WalkerService walkerService = CreateWalkerService();
+            var walker = walkerService.GetWalkerById(id);
+            return Ok(walker);
+        }
+
+        //Post Method
+        public IHttpActionResult Post(WalkerCreate walker)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            _context.Walkers.Add(walker);
-            await _context.SaveChangesAsync();
-            return Ok($"{walker.WalkerName} was added");
+            var service = CreateWalkerService();
+
+            if (!service.CreateWalker(walker))
+                return InternalServerError();
+
+            return Ok();
         }
 
-        //Get
-        //Get All
 
-        [HttpGet]
-        public async Task<IHttpActionResult> GetAll()
+        //Put or Update Method
+
+        //Put
+        public IHttpActionResult Put(WalkerEdit walker)
         {
-            List<Walker> genres = await _context.Walkers.ToListAsync();
-            return Ok(genres);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateWalkerService();
+
+            if (!service.UpdateWalker(walker))
+                return InternalServerError();
+
+            return Ok();
         }
 
-        //Get by SKU
-        [HttpGet]
-        public async Task<IHttpActionResult> GetByID([FromUri] int id)
-        {
-            Walker walker = await _context.Walkers.FindAsync(id);
+        //Delete method
 
-            if (walker != null)
-            {
-                return Ok(walker);
-            }
-            return NotFound();
+        //Delete
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateWalkerService();
+            if (!service.DeleteWalker(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }

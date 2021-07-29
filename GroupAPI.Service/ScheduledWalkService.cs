@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Service
 {
-    class ScheduledWalkService
+    public class ScheduledWalkService
     {
-        public bool CreateIndividualWalkServiceService(ScheduledWalksCreate model)
+        public bool CreateScheduledWalks(ScheduledWalksCreate model)
         {
             var entity =
                 new ScheduledWalks()
@@ -70,7 +70,7 @@ namespace GroupAPI.Service
             }
         }
 
-        public 
+        
 
         //Put or Update
         //Update Method

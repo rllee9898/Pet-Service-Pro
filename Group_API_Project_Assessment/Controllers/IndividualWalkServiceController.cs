@@ -1,4 +1,6 @@
 ﻿using GroupAPI.Data;
+using GroupAPI.Models;
+using GroupAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,117 +14,68 @@ namespace Group_API_Project_Assessment.Controllers
 {
     public class IndividualWalkServiceController : ApiController
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
-
-        //CRUD / PGPD
-        //Post
-
-        [HttpPost]
-        public async Task<IHttpActionResult> Post(IndividualWalkService individualWalkService)
+        private IndividualWalkServiceService CreateIndividualWalkServiceService()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.IndividualWalkServices.Add(individualWalkService);
-            await _context.SaveChangesAsync();
-            return Ok($"{individualWalkService.ServiceName} was added");
+            var individualWalkServiceService = new IndividualWalkServiceService();
+            return individualWalkServiceService;
         }
 
-        //Get
-        //Get All
-
-        [HttpGet]
-        public async Task<IHttpActionResult> GetAll()
+        //Get Method
+        public IHttpActionResult Get()
         {
-            List<IndividualWalkService> individualWalkService = await _context.IndividualWalkServices.ToListAsync();
+            IndividualWalkServiceService individualWalkServiceService = CreateIndividualWalkServiceService();
+            var individualWalkService = individualWalkServiceService.GetIndividualWalkServiceService();
             return Ok(individualWalkService);
         }
 
-        //Get by serviceID
-        [HttpGet]
-        public async Task<IHttpActionResult> GetByID([FromUri] int ServiceId)
+        public IHttpActionResult Get(int id)
         {
-            IndividualWalkService individualWalkService = await _context.IndividualWalkServices.FindAsync(ServiceId);
-
-            if (individualWalkService != null)
-            {
-                return Ok(individualWalkService);
-            }
-            return NotFound();
+            IndividualWalkServiceService individualWalkServiceService = CreateIndividualWalkServiceService();
+            var individualWalkService = individualWalkServiceService.GetIndividualWalkServiceServiceById(id);
+            return Ok(individualWalkService);
         }
 
-        public async Task<IHttpActionResult> GetByLocationId([FromUri] int locationId)
-        {
-            //customer id exists?
-
-            List<IndividualWalkService> walkToReturn = new List<IndividualWalkService>();
-            List<IndividualWalkService> walkInDatabase = await _context.IndividualWalkServices.ToListAsync();
-
-            foreach (IndividualWalkService walk in walkInDatabase)
-            {
-                if (walk.LocationId == locationId)
-                {
-                    walkToReturn.Add(walk);
-                }
-            }
-            //using a link querying through a list
-            //does the same thing as the above foreach loop
-            walkToReturn = walkInDatabase.Where(t => t.LocationId == locationId).ToList();
-
-
-            // how to return a list
-            return Ok(walkToReturn);
-        }
-
-
-
-        //Update = Put
-        [HttpPut]
-        public async Task<IHttpActionResult> UpdateLocation([FromUri] int ServiceId, [FromBody] IndividualWalkService model)
+        //Post Method
+        public IHttpActionResult Post(IndividualWalkServiceCreate individualWalkService)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            IndividualWalkService individualWalkService = await _context.IndividualWalkServices.FindAsync(ServiceId);
-            if (individualWalkService == null)
-            {
-                return NotFound();
-            }
+            var service = CreateIndividualWalkServiceService();
 
-            if (individualWalkService.ServiceId != model.ServiceId)
-            {
-                return BadRequest("IndividualWalkService Missmatch");
-            }
+            if (!service.CreateIndividualWalkServiceService(individualWalkService))
+                return InternalServerError();
 
-            individualWalkService.ServiceId = model.ServiceId;
-            individualWalkService.ServiceName = model.ServiceName;
-            individualWalkService.WalkLength = model.WalkLength;
-            individualWalkService.LocationId = model.LocationId;
-            individualWalkService.Price = model.Price;
-
-            await _context.SaveChangesAsync();
             return Ok();
-
         }
 
-        //Delete
-        [HttpDelete]
-        public async Task<IHttpActionResult> Delete([FromUri] int ServiceId)
+
+        //Put or Update Method
+
+        //Put
+        public IHttpActionResult Put(IndividualWalkServiceEdit individualWalkService)
         {
-            IndividualWalkService individualWalkService = await _context.IndividualWalkServices.FindAsync(ServiceId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (individualWalkService == null)
-            {
-                return NotFound();
-            }
+            var service = CreateIndividualWalkServiceService();
 
-            _context.IndividualWalkServices.Remove(individualWalkService);
-            await _context.SaveChangesAsync();
-            return Ok($"{individualWalkService.ServiceName} was removed from the DB");
+            if (!service.UpdateIndividualWalkService(individualWalkService))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        //Delete method
+
+        //Delete
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateIndividualWalkServiceService();
+            if (!service.DeleteIndividualWalkService(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }

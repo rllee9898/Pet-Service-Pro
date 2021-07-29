@@ -1,4 +1,6 @@
 ﻿using GroupAPI.Data;
+using GroupAPI.Models;
+using GroupAPI.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,96 +14,68 @@ namespace Group_API_Project_Assessment.Controllers
 {
     public class ScheduledWalksController : ApiController
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
-
-        //CRUD / PGPD
-        //Post
-
-        [HttpPost]
-        public async Task<IHttpActionResult> Post(ScheduledWalks scheduledWalks)
+        private ScheduledWalkService CreateScheduledWalksService()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.ScheduledWalkss.Add(scheduledWalks);
-            await _context.SaveChangesAsync();
-            return Ok($"{scheduledWalks.EventName} was added");
+            var scheduledWalksService = new ScheduledWalkService();
+            return scheduledWalksService;
         }
 
-        //Get
-        //Get All
-
-        [HttpGet]
-        public async Task<IHttpActionResult> GetAll()
+        //Get Method
+        public IHttpActionResult Get()
         {
-            List<ScheduledWalks> scheduledWalks = await _context.ScheduledWalkss.ToListAsync();
+            ScheduledWalkService scheduledWalksService = CreateScheduledWalksService();
+            var scheduledWalks = scheduledWalksService.GetScheduledWalks();
             return Ok(scheduledWalks);
         }
 
-        //Get by SKU
-        [HttpGet]
-        public async Task<IHttpActionResult> GetByID([FromUri] int LocationId)
+        public IHttpActionResult Get(int id)
         {
-            ScheduledWalks scheduledWalks = await _context.ScheduledWalkss.FindAsync(LocationId);
-
-            if (scheduledWalks != null)
-            {
-                return Ok(scheduledWalks);
-            }
-            return NotFound();
+            ScheduledWalkService scheduledWalksService = CreateScheduledWalksService();
+            var scheduledWalks = scheduledWalksService.GetScheduledWalksById(id);
+            return Ok(scheduledWalks);
         }
 
-
-
-        //Update = Put
-        [HttpPut]
-        public async Task<IHttpActionResult> UpdateLocation([FromUri] int LocationId, [FromBody] ScheduledWalks model)
+        //Post Method
+        public IHttpActionResult Post(ScheduledWalksCreate scheduledWalks)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            ScheduledWalks scheduledWalks = await _context.ScheduledWalkss.FindAsync(LocationId);
-            if (scheduledWalks == null)
-            {
-                return NotFound();
-            }
+            var service = CreateScheduledWalksService();
 
-            if (scheduledWalks.EventId != model.EventId)
-            {
-                return BadRequest("ScheduledWalks Missmatch");
-            }
+            if (!service.CreateScheduledWalks(scheduledWalks))
+                return InternalServerError();
 
-            scheduledWalks.EventId = model.EventId;
-            scheduledWalks.EventName = model.EventName;
-            scheduledWalks.ServiceId = model.ServiceId;
-            scheduledWalks.WalkerId = model.WalkerId;
-            scheduledWalks.PetId = model.PetId;
-            scheduledWalks.Price = model.Price;
-
-
-            await _context.SaveChangesAsync();
             return Ok();
-
         }
 
-        //Delete
-        [HttpDelete]
-        public async Task<IHttpActionResult> Delete([FromUri] int LocationId)
+
+        //Put or Update Method
+
+        //Put
+        public IHttpActionResult Put(ScheduledWalksEdit scheduledWalks)
         {
-            ScheduledWalks scheduledWalks = await _context.ScheduledWalkss.FindAsync(LocationId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (scheduledWalks == null)
-            {
-                return NotFound();
-            }
+            var service = CreateScheduledWalksService();
 
-            _context.ScheduledWalkss.Remove(scheduledWalks);
-            await _context.SaveChangesAsync();
-            return Ok($"{scheduledWalks.EventName} was removed from the DB");
+            if (!service.UpdateScheduledWalks(scheduledWalks))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        //Delete method
+
+        //Delete
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateScheduledWalksService();
+            if (!service.DeleteScheduledWalks(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }
