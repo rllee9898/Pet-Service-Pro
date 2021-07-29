@@ -13,9 +13,9 @@ using System.Web.Http;
 
 namespace Group_API_Project_Assessment.Controllers
 {
+        [Authorize]
     public class PetController : ApiController
     {
-        [Authorize]
         private PetService CreatePetService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

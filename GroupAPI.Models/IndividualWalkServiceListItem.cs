@@ -24,6 +24,9 @@ namespace GroupAPI.Models
         [Display(Name = "Location Start")]
         public string LocationStart { get; set; }
 
+        [Display(Name = "Location End")]
+        public string LocationEnd { get; set; }
+
         [Display(Name = "City")]
         public string City { get; set; }
 
