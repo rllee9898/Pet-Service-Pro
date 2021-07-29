@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Service
 {
-    class IndividualWalkServiceService
+    public class IndividualWalkServiceService
     {
         public bool CreateIndividualWalkServiceService(IndividualWalkServiceCreate model)
         {
@@ -73,7 +73,7 @@ namespace GroupAPI.Service
         }
         //Put or Update
         //Update Method
-        public bool UpdateLocation(IndividualWalkServiceEdit model)
+        public bool UpdateIndividualWalkService(IndividualWalkServiceEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -90,7 +90,7 @@ namespace GroupAPI.Service
         }
         //Delete Method
         //Delete
-        public bool DeleteLocation(int ServiceId)
+        public bool DeleteIndividualWalkService(int ServiceId)
         {
             using (var ctx = new ApplicationDbContext())
             {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Service
 {
-    class WalkerService
+    public class WalkerService
     {
         //PGPD
 

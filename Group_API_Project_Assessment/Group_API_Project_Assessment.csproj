@@ -320,6 +320,10 @@
       <Project>{37bff0a4-95ed-4bce-a5df-42c6b886f57e}</Project>
       <Name>GroupAPI.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GroupAPI.Service\GroupAPI.Service.csproj">
+      <Project>{82E85926-FEB7-4155-A0A4-C5DE7AD2E43B}</Project>
+      <Name>GroupAPI.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

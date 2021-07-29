@@ -1,4 +1,7 @@
 ﻿using GroupAPI.Data;
+using GroupAPI.Models;
+using GroupAPI.Service;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,98 +15,70 @@ namespace Group_API_Project_Assessment.Controllers
 {
     public class PetController : ApiController
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        [Authorize]
+        private PetService CreatePetService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var petService = new PetService(userId);
+            return petService;
+        }
+        
+        //Get Method
+        public IHttpActionResult Get()
+        {
+            PetService petService = CreatePetService();
+            var pets = petService.GetPets();
+            return Ok(pets);
+        }
 
-            //CRUD / PGPD
-            //Post
+        public IHttpActionResult Get(int id)
+        {
+            PetService petService = CreatePetService();
+            var pet = petService.GetPetById(id);
+            return Ok(pet);
+        }
 
-            [HttpPost]
-        public async Task<IHttpActionResult> Post(Pet pet)
+        //Post Method
+        public IHttpActionResult Post(PetCreate pet)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            _context.Pets.Add(pet);
-            await _context.SaveChangesAsync();
-            return Ok($"{pet.PetName} was added");
+            var service = CreatePetService();
+
+            if (!service.CreatePet(pet))
+                return InternalServerError();
+
+            return Ok();
         }
 
-        //Get
-        //Get All
 
-        [HttpGet]
-        public async Task<IHttpActionResult> GetAll()
+        //Put or Update Method
+
+        //Put
+        public IHttpActionResult Put(PetEdit pet)
         {
-            List<Pet> genres = await _context.Pets.ToListAsync();
-            return Ok(genres);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreatePetService();
+
+            if (!service.UpdatePet(pet))
+                return InternalServerError();
+
+            return Ok();
         }
 
-        //Get by SKU
-        [HttpGet]
-        public async Task<IHttpActionResult> GetByID([FromUri] int id)
+        //Delete method
+        //Delete
+        public IHttpActionResult Delete(int id)
         {
-            Pet pet = await _context.Pets.FindAsync(id);
+            var service = CreatePetService();
+            if (!service.DeletePet(id))
+                return InternalServerError();
 
-            if (pet != null)
-            {
-                return Ok(pet);
-            }
-            return NotFound();
+            return Ok();
         }
-
-
-
-        /*            //Update = Put
-                    [HttpPut]
-                    public async Task<IHttpActionResult> UpdateProduct([FromUri] string sku, [FromBody] Product model)
-                    {
-                        if (!ModelState.IsValid)
-                        {
-                            return BadRequest(ModelState);
-                        }
-
-                        Pet product = await _context.Pets.FindAsync(sku);
-                        if (product == null)
-                        {
-                            return NotFound();
-                        }
-
-                        if (product.SKU != model.SKU)
-                        {
-                            return BadRequest("Product SKU Missmatch");
-                        }
-
-                        //_context.Entry(model).State = EntityState.Modified;
-                        //Does the same thing as setting properties individually
-                        product.PetName = model.PetName;
-                        product.NumberInStock = model.NumberInStock;
-                        product.Cost = model.Cost;
-                        //product.IsInStock = model.IsInStock;
-
-                        await _context.SaveChangesAsync();
-                        return Ok();
-
-                    }
-
-                    //Delete
-                    [HttpDelete]
-                    public async Task<IHttpActionResult> Delete([FromUri] string sku)
-                    {
-                        Product product = await _context.Products.FindAsync(sku);
-
-                        if (product == null)
-                        {
-                            return NotFound();
-                        }
-
-                        _context.Products.Remove(product);
-                        await _context.SaveChangesAsync();
-                        return Ok($"{product.PetName} was removed from the DB");
-                    }
-
-                }*/
     }
-
 }
+
