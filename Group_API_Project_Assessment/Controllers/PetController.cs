@@ -13,12 +13,15 @@ using System.Web.Http;
 
 namespace Group_API_Project_Assessment.Controllers
 {
+
     /// <summary>
     /// This is where the user can find information about Pets
     /// </summary>
+
+        [Authorize]
+
     public class PetController : ApiController
     {
-        [Authorize]
         private PetService CreatePetService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
