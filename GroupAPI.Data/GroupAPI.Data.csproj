@@ -101,6 +101,18 @@
     <Compile Include="Migrations\202107281521289_update branh.Designer.cs">
       <DependentUpon>202107281521289_update branh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108021551090_updated schduled walk.cs" />
+    <Compile Include="Migrations\202108021551090_updated schduled walk.Designer.cs">
+      <DependentUpon>202108021551090_updated schduled walk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108021748594_added model annotation.cs" />
+    <Compile Include="Migrations\202108021748594_added model annotation.Designer.cs">
+      <DependentUpon>202108021748594_added model annotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108021815185_unknown.cs" />
+    <Compile Include="Migrations\202108021815185_unknown.Designer.cs">
+      <DependentUpon>202108021815185_unknown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ScheduledWalks.cs" />
     <Compile Include="Walker.cs" />
@@ -125,6 +137,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107281521289_update branh.resx">
       <DependentUpon>202107281521289_update branh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108021551090_updated schduled walk.resx">
+      <DependentUpon>202108021551090_updated schduled walk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108021748594_added model annotation.resx">
+      <DependentUpon>202108021748594_added model annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108021815185_unknown.resx">
+      <DependentUpon>202108021815185_unknown.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

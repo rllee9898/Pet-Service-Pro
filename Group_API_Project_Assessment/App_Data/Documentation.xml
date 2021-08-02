@@ -488,7 +488,7 @@
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.IndividualWalkServiceController.Get">
             <summary>
-            Gets a list of the services available
+            Gets a list of the Services available
             </summary>
             <returns>A list of services</returns>
         </member>
@@ -508,26 +508,26 @@
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.IndividualWalkServiceController.Put(GroupAPI.Models.IndividualWalkServiceEdit)">
             <summary>
-            Allows Admin to edit a service
+            Allows Admin to edit a Service
             </summary>
             <param name="individualWalkService"></param>
             <returns>A Success or failure message</returns>
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.IndividualWalkServiceController.Delete(System.Int32)">
             <summary>
-            Allows admin to delete a Service
+            Allows Admin to delete a Service
             </summary>
             <param name="id"></param>
             <returns>A confirmation or denial that the Service has been deleted</returns>
         </member>
         <member name="T:Group_API_Project_Assessment.Controllers.LocationController">
             <summary>
-            This is where the user can find information about the location of a walk
+            This is where the user can find information about the Location of a walk
             </summary>
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.LocationController.Get">
             <summary>
-            Gets a list of the locations available for walks
+            Gets a list of the Locations available for walks
             </summary>
             <returns>A list of locations</returns>
         </member>
@@ -547,14 +547,14 @@
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.LocationController.Put(GroupAPI.Models.LocationEdit)">
             <summary>
-            Allows Admin to edit the location of a walk
+            Allows Admin to edit the Location of a walk
             </summary>
             <param name="location"></param>
             <returns>A Success or failure message</returns>
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.LocationController.Delete(System.Int32)">
             <summary>
-            Allows admin to delete a Location
+            Allows Admin to delete a Location
             </summary>
             <param name="id"></param>
             <returns>A confirmation or denial that the Location has been deleted</returns>
@@ -632,7 +632,7 @@
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.ScheduledWalksController.Delete(System.Int32)">
             <summary>
-            Allows admin to delete a Scheduled Walk
+            Allows Admin to delete a Scheduled Walk
             </summary>
             <param name="id"></param>
             <returns>A confirmation or denial that the Scheduled Walk has been deleted</returns>
@@ -644,7 +644,7 @@
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.WalkerController.Get">
             <summary>
-            Gets a list of the Walkers available for walks
+            Gets a list of the Walkers available
             </summary>
             <returns>A list of Walkers</returns>
         </member>
@@ -671,10 +671,21 @@
         </member>
         <member name="M:Group_API_Project_Assessment.Controllers.WalkerController.Delete(System.Int32)">
             <summary>
-            Allows admin to delete a Walker
+            Allows Admin to delete a Walker
             </summary>
             <param name="id"></param>
             <returns>A confirmation or denial that the Walker has been deleted</returns>
+        </member>
+        <member name="T:ElevenNote.WebAPI.AddAuthorizationHeaderParameterOperationFilter">
+            <summary>
+            Document filter for adding Authorization header in Swashbuckle / Swagger.
+            </summary>
+        </member>
+        <member name="T:ElevenNote.WebAPI.AuthTokenEndpointOperation">
+            <summary>
+            Document filter for adding OAuth Token endpoint documentation in Swashbuckle / Swagger.
+            Swagger normally won't find it - the /token endpoint - due to it being programmatically generated.
+            </summary>
         </member>
     </members>
 </doc>
