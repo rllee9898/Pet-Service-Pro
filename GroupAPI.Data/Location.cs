@@ -11,9 +11,15 @@ namespace GroupAPI.Data
     {
         [Key]
         public int LocationId { get; set; }
+
         public string LocationStart { get; set; }
+
         public string LocationEnd { get; set; }
+
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public string State { get; set; }
 
     }

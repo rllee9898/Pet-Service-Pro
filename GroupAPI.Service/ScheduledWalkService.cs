@@ -44,6 +44,7 @@ namespace GroupAPI.Service
                                     EventName = e.EventName,
                                     ServiceId = e.ServiceId,
                                     PetId = e.PetId,
+                               
                                     Price = e.Price
                                 }
                         );

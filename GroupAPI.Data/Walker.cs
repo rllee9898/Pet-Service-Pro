@@ -11,7 +11,8 @@ namespace GroupAPI.Data
     {
         [Key]
         public int WalkerId { get; set; }
-         
+
+        [Required]
         public string WalkerName { get; set; }
     }
 }

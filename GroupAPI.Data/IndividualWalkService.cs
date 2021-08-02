@@ -12,7 +12,8 @@ namespace GroupAPI.Data
     {
         [Key]
         public int ServiceId { get; set; }
-      
+
+        [Required]
         public string ServiceName { get; set; }
 
         public int WalkLength { get; set; }
