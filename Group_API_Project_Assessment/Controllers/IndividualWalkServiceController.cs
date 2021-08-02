@@ -12,6 +12,9 @@ using System.Web.Http;
 
 namespace Group_API_Project_Assessment.Controllers
 {
+    /// <summary>
+    /// This is where the user can find information about the Walk Serivces
+    /// </summary>
     public class IndividualWalkServiceController : ApiController
     {
         private IndividualWalkServiceService CreateIndividualWalkServiceService()
@@ -21,6 +24,10 @@ namespace Group_API_Project_Assessment.Controllers
         }
 
         //Get Method
+        /// <summary>
+        /// Gets a list of the Services available
+        /// </summary>
+        /// <returns>A list of services</returns>
         public IHttpActionResult Get()
         {
             IndividualWalkServiceService individualWalkServiceService = CreateIndividualWalkServiceService();
@@ -28,6 +35,11 @@ namespace Group_API_Project_Assessment.Controllers
             return Ok(individualWalkService);
         }
 
+        /// <summary>
+        /// Gets a specific Service based on Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A singular Service</returns>
         public IHttpActionResult Get(int id)
         {
             IndividualWalkServiceService individualWalkServiceService = CreateIndividualWalkServiceService();
@@ -36,6 +48,11 @@ namespace Group_API_Project_Assessment.Controllers
         }
 
         //Post Method
+        /// <summary>
+        /// Allows Admin to add a new Service
+        /// </summary>
+        /// <param name="individualWalkService"></param>
+        /// <returns>A success or failure message</returns>
         public IHttpActionResult Post(IndividualWalkServiceCreate individualWalkService)
         {
             if (!ModelState.IsValid)
@@ -53,6 +70,11 @@ namespace Group_API_Project_Assessment.Controllers
         //Put or Update Method
 
         //Put
+        /// <summary>
+        /// Allows Admin to edit a Service
+        /// </summary>
+        /// <param name="individualWalkService"></param>
+        /// <returns>A Success or failure message</returns>
         public IHttpActionResult Put(IndividualWalkServiceEdit individualWalkService)
         {
             if (!ModelState.IsValid)
@@ -69,6 +91,11 @@ namespace Group_API_Project_Assessment.Controllers
         //Delete method
 
         //Delete
+        /// <summary>
+        /// Allows Admin to delete a Service
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A confirmation or denial that the Service has been deleted</returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateIndividualWalkServiceService();

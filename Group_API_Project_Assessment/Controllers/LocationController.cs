@@ -12,6 +12,10 @@ using System.Web.Http;
 
 namespace Group_API_Project_Assessment.Controllers
 {
+    /// <summary>
+    /// This is where the user can find information about the Location of a walk
+    /// </summary>
+    
     public class LocationController : ApiController
     {
 
@@ -22,6 +26,11 @@ namespace Group_API_Project_Assessment.Controllers
         }
 
         //Get Method
+        /// <summary>
+        /// Gets a list of the Locations available for walks
+        /// </summary>
+        /// <returns>A list of locations</returns>
+        
         public IHttpActionResult Get()
         {
             LocationService locationService = CreateLocationService();
@@ -29,6 +38,11 @@ namespace Group_API_Project_Assessment.Controllers
             return Ok(location);
         }
 
+        /// <summary>
+        /// Gets a specific Location based on Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A singular Location</returns>
         public IHttpActionResult Get(int id)
         {
             LocationService locationService = CreateLocationService();
@@ -37,6 +51,11 @@ namespace Group_API_Project_Assessment.Controllers
         }
 
         //Post Method
+        /// <summary>
+        /// Allows Admin to add a new Location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>A success or failure message</returns>
         public IHttpActionResult Post(LocationCreate location)
         {
             if (!ModelState.IsValid)
@@ -54,6 +73,11 @@ namespace Group_API_Project_Assessment.Controllers
         //Put or Update Method
 
         //Put
+        /// <summary>
+        /// Allows Admin to edit the Location of a walk
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>A Success or failure message</returns>
         public IHttpActionResult Put(LocationEdit location)
         {
             if (!ModelState.IsValid)
@@ -70,6 +94,11 @@ namespace Group_API_Project_Assessment.Controllers
         //Delete method
 
         //Delete
+        /// <summary>
+        /// Allows Admin to delete a Location
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A confirmation or denial that the Location has been deleted</returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateLocationService();
