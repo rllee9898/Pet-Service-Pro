@@ -9,11 +9,16 @@ namespace GroupAPI.Models
 {
     public class PetEdit
     {
-        //[Key]
-        //[Required]
+        [Display(Name = "Pet Id")]
         public int PetId { get; set; }
+
+        [Display(Name = "Owner Id")]
         public Guid OwnerId { get; set; }
+
+        [Display(Name = "Pet Type")]
         public string PetType { get; set; }
+
+        [Display(Name = "Pet Name")]
         public string PetName { get; set; }
     }
 }

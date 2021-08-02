@@ -14,7 +14,11 @@ namespace GroupAPI.Data
         public int PetId { get; set; }
 
         public Guid OwnerId { get; set; }
+
+        [Required]
         public string PetType { get; set; }
+
+        [Required]
         public string PetName { get; set; }
     }
 }

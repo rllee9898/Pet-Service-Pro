@@ -18,6 +18,17 @@ namespace GroupAPI.Data
         /// </summary>
         [Key]
         public int LocationId { get; set; }
+
+
+        public string LocationStart { get; set; }
+
+        public string LocationEnd { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+
         /// <summary>
         /// Location of the start of the walk.
         /// </summary>
@@ -33,6 +44,7 @@ namespace GroupAPI.Data
         /// <summary>
         /// State in which a particular walk talkes place.
         /// </summary>
+
         public string State { get; set; }
 
     }

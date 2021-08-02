@@ -12,6 +12,8 @@ namespace GroupAPI.Data
     {
         [Key]
         public int EventId { get; set; }
+
+        [Required]
         public string EventName { get; set; }
 
         [ForeignKey(nameof(IndividualWalkService))]
