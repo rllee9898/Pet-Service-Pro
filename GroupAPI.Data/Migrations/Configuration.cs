@@ -67,6 +67,13 @@ namespace GroupAPI.Data.Migrations
               new IndividualWalkService { ServiceName = "Long Walk", WalkLength = 15, Price = 24.42m, LocationId = 4 },
               new IndividualWalkService { ServiceName = "Really Long Walk", WalkLength = 32, Price = 37.42m, LocationId = 3 }
               );
+
+            context.ScheduledWalkss.AddOrUpdate(
+              p => p.EventName,
+              new ScheduledWalks { EventName = "BrekenridgeWalk", ServiceId = 2, WalkerId = 1, PetId = 1, Price = 17.42m },
+              new ScheduledWalks { EventName = "Jazz Festival", ServiceId = 3, WalkerId = 1, PetId = 2, Price = 29.42m },
+              new ScheduledWalks { EventName = "Blues Festival", ServiceId = 4, WalkerId = 1, PetId = 3, Price = 45.42m }
+             );
         }
     }
 }

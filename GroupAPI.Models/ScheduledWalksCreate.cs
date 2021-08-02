@@ -9,8 +9,11 @@ namespace GroupAPI.Models
 {
     public class ScheduledWalksCreate
     {
-        [Display(Name = "Event Name")]
+        [Display(Name = "Event Id")]
         public int EventId { get; set; }
+
+        [Display(Name = "Event Name")]
+        public string EventName { get; set; }
 
         [Display(Name = "Service ID")]
         public int ServiceId { get; set; }
