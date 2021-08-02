@@ -84,6 +84,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndividualWalkService.cs" />
+    <Compile Include="Migrations\202107261930168_InitialCreate.cs" />
+    <Compile Include="Migrations\202107261930168_InitialCreate.Designer.cs">
+      <DependentUpon>202107261930168_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107271844303_Robbiemigration one.cs" />
+    <Compile Include="Migrations\202107271844303_Robbiemigration one.Designer.cs">
+      <DependentUpon>202107271844303_Robbiemigration one.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107281327369_added foreign keys.cs" />
+    <Compile Include="Migrations\202107281327369_added foreign keys.Designer.cs">
+      <DependentUpon>202107281327369_added foreign keys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107281521289_update branh.cs" />
+    <Compile Include="Migrations\202107281521289_update branh.Designer.cs">
+      <DependentUpon>202107281521289_update branh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108021551090_updated schduled walk.cs" />
+    <Compile Include="Migrations\202108021551090_updated schduled walk.Designer.cs">
+      <DependentUpon>202108021551090_updated schduled walk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108021748594_added model annotation.cs" />
+    <Compile Include="Migrations\202108021748594_added model annotation.Designer.cs">
+      <DependentUpon>202108021748594_added model annotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108021815185_unknown.cs" />
+    <Compile Include="Migrations\202108021815185_unknown.Designer.cs">
+      <DependentUpon>202108021815185_unknown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ScheduledWalks.cs" />
+    <Compile Include="Walker.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Pet.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,6 +124,29 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107261930168_InitialCreate.resx">
+      <DependentUpon>202107261930168_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107271844303_Robbiemigration one.resx">
+      <DependentUpon>202107271844303_Robbiemigration one.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107281327369_added foreign keys.resx">
+      <DependentUpon>202107281327369_added foreign keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107281521289_update branh.resx">
+      <DependentUpon>202107281521289_update branh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108021551090_updated schduled walk.resx">
+      <DependentUpon>202108021551090_updated schduled walk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108021748594_added model annotation.resx">
+      <DependentUpon>202108021748594_added model annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108021815185_unknown.resx">
+      <DependentUpon>202108021815185_unknown.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

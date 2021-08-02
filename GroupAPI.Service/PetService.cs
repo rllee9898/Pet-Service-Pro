@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GroupAPI.Service
 {
-    class PetService
+    public class PetService
     {
         private readonly Guid _userId;
 
@@ -22,7 +22,7 @@ namespace GroupAPI.Service
         //Post 
 
         // This will create a instance of Pet
-        public bool CreateNote(PetCreate model)
+        public bool CreatePet(PetCreate model)
         {
             var entity =
                 new Pet()
@@ -42,8 +42,8 @@ namespace GroupAPI.Service
 
         //Get
 
-        //This method will allow us to see all the pets that belong to a specific user.
-        public IEnumerable<PetListItem> GetNotes()
+        //This method will allow us to see the pets that belong to a specific user.
+        public IEnumerable<PetListItem> GetPetsByUserId()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -65,14 +65,37 @@ namespace GroupAPI.Service
             
         }
 
-        public PetDetail GetPetById(int id)
+        //This method will allow us to see the pets that belong to a specific user.
+        public IEnumerable<PetListItem> GetPets()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Pets
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new PetListItem
+                                {
+                                    PetId = e.PetId,
+                                    PetType = e.PetType,
+                                    PetName = e.PetName
+                                }
+                        );
+                return query.ToArray();
+            }
+
+        }
+
+        public PetDetail GetPetById(int Petid)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var enity =
                     ctx
                         .Pets
-                        .Single(e => e.PetId == id && e.OwnerId == _userId);
+                        .Single(e => e.PetId == Petid && e.OwnerId == _userId);
                 return
                     new PetDetail
                     {

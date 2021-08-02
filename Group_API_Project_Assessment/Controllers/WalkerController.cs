@@ -1,7 +1,6 @@
 ﻿using GroupAPI.Data;
 using GroupAPI.Models;
 using GroupAPI.Service;
-using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,59 +12,54 @@ using System.Web.Http;
 
 namespace Group_API_Project_Assessment.Controllers
 {
-
     /// <summary>
-    /// This is where the user can find information about Pets
+    /// This is where the user can find information about the Walkers
     /// </summary>
-
-        [Authorize]
-
-    public class PetController : ApiController
+    public class WalkerController : ApiController
     {
-        private PetService CreatePetService()
+        private WalkerService CreateWalkerService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var petService = new PetService(userId);
-            return petService;
+            var walkerService = new WalkerService();
+            return walkerService;
         }
 
         //Get Method
         /// <summary>
-        /// Gets a list of the Pets
+        /// Gets a list of the Walkers available
         /// </summary>
-        /// <returns>A list of Pets</returns>
+        /// <returns>A list of Walkers</returns>
         public IHttpActionResult Get()
         {
-            PetService petService = CreatePetService();
-            var pets = petService.GetPets();
-            return Ok(pets);
+            WalkerService walkerService = CreateWalkerService();
+            var walker = walkerService.GetWalkers();
+            return Ok(walker);
         }
         /// <summary>
-        /// Gets a specific Pet based on Id
+        /// Gets a specific Walker based on Id
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>A singular Pet</returns>
+        /// <returns>A singular Walker</returns>
         public IHttpActionResult Get(int id)
         {
-            PetService petService = CreatePetService();
-            var pet = petService.GetPetById(id);
-            return Ok(pet);
+            WalkerService walkerService = CreateWalkerService();
+            var walker = walkerService.GetWalkerById(id);
+            return Ok(walker);
         }
 
         //Post Method
         /// <summary>
-        /// Allows User to add a new Pet
+        /// Allows Admin to add a new Walker
         /// </summary>
-        /// <param name="pet"></param>
+        /// <param name="walker"></param>
         /// <returns>A success or failure message</returns>
-        public IHttpActionResult Post(PetCreate pet)
+        public IHttpActionResult Post(WalkerCreate walker)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreatePetService();
+            var service = CreateWalkerService();
 
-            if (!service.CreatePet(pet))
+            if (!service.CreateWalker(walker))
                 return InternalServerError();
 
             return Ok();
@@ -76,38 +70,38 @@ namespace Group_API_Project_Assessment.Controllers
 
         //Put
         /// <summary>
-        /// Allows User or Admin to edit a Pet
+        /// Allows Admin to edit a Walker
         /// </summary>
-        /// <param name="pet"></param>
+        /// <param name="walker"></param>
         /// <returns>A Success or failure message</returns>
-        public IHttpActionResult Put(PetEdit pet)
+        public IHttpActionResult Put(WalkerEdit walker)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreatePetService();
+            var service = CreateWalkerService();
 
-            if (!service.UpdatePet(pet))
+            if (!service.UpdateWalker(walker))
                 return InternalServerError();
 
             return Ok();
         }
 
         //Delete method
+
         //Delete
         /// <summary>
-        /// Allows User or Admin to delete a Pet
+        /// Allows Admin to delete a Walker
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>A confirmation or denial that the Pet has been deleted</returns>
+        /// <returns>A confirmation or denial that the Walker has been deleted</returns>
         public IHttpActionResult Delete(int id)
         {
-            var service = CreatePetService();
-            if (!service.DeletePet(id))
+            var service = CreateWalkerService();
+            if (!service.DeleteWalker(id))
                 return InternalServerError();
 
             return Ok();
         }
     }
 }
-
