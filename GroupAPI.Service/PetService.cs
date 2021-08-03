@@ -55,6 +55,7 @@ namespace GroupAPI.Service
                             e =>
                                 new PetListItem
                                 {
+                                    OwnerId = e.OwnerId,
                                     PetId = e.PetId,
                                     PetType = e.PetType,
                                     PetName = e.PetName
