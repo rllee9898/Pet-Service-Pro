@@ -79,6 +79,7 @@ namespace GroupAPI.Service
                             e =>
                                 new PetListItem
                                 {
+                                    OwnerId = e.OwnerId,
                                     PetId = e.PetId,
                                     PetType = e.PetType,
                                     PetName = e.PetName
@@ -100,6 +101,7 @@ namespace GroupAPI.Service
                 return
                     new PetDetail
                     {
+                        OwnerId = enity.OwnerId,
                         PetId = enity.PetId,
                         PetType = enity.PetType,
                         PetName = enity.PetName
@@ -119,6 +121,7 @@ namespace GroupAPI.Service
                 var entity =
                     ctx.Pets.Single(e => e.PetId == model.PetId && e.OwnerId == _userId);
 
+                entity.OwnerId = model.OwnerId;
                 entity.PetId = model.PetId;
                 entity.PetType = model.PetType;
                 entity.PetName = model.PetName;

@@ -113,6 +113,10 @@
     <Compile Include="Migrations\202108021815185_unknown.Designer.cs">
       <DependentUpon>202108021815185_unknown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108031548448_update.cs" />
+    <Compile Include="Migrations\202108031548448_update.Designer.cs">
+      <DependentUpon>202108031548448_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ScheduledWalks.cs" />
     <Compile Include="Walker.cs" />
@@ -146,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108021815185_unknown.resx">
       <DependentUpon>202108021815185_unknown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108031548448_update.resx">
+      <DependentUpon>202108031548448_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
