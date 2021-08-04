@@ -9,17 +9,17 @@ A list of Scheduled Walks can also be presented to verify a selected service has
 ## API Request
 
 **Pet**
-*POST api/Pet To create an instance of your pet you need to first:
+```POST api/Pet``` To create an instance of your pet you need to first:
 1. PetType - Enter in the type of pet you have.
 2. PetName - Enter the Name of your pet.
 
-*GET api/Pet A GET request will return all of the pets posted by the user.
+```GET api/Pet``` A GET request will return all of the pets posted by the user.
 
-*GET api/Pet{id} A GET request with an id will search for the pet posted by the user with that id. If none exist it will return a 404
+```GET api/Pet{id}``` A GET request with an id will search for the pet posted by the user with that id. If none exist it will return a 404
 
-*PUT api/pet A PUT request is used to update the pet information.
+```PUT api/pet``` A PUT request is used to update the pet information.
 
-*DELETE api/pet/{id} This deletes the pet from the database
+```DELETE api/pet/{id}``` This deletes the pet from the database
 
 ###### Stretch Goals
 Areas open to further development include at the very least adding additional objects pertinent to Pets, Pet Owners, and Walkers.  For example information about the location and preferences of the Walkers may additionally improve the helpfulness and accuracy of the project.
